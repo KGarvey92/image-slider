@@ -1,0 +1,29 @@
+{
+  "name": "@kgarvey92/image-slider",
+  "version": "1.0.0",
+  "description": "module for an image slider",
+  "main": "dist/image-slider.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KGarvey92/image-slider.git"
+  },
+  "keywords": [
+    "image",
+    "slider",
+    "module"
+  ],
+  "author": "kgarvey92",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KGarvey92/image-slider/issues"
+  },
+  "homepage": "https://github.com/KGarvey92/image-slider#readme",
+  "dependencies": {
+  }
+}
