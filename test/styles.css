@@ -1,0 +1,43 @@
+
+
+.reel {
+  width: 90vw;
+  height: 50vh;
+  position: relative;
+}
+
+
+.prev-btn, .next-btn {
+  height: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.prev-btn {
+  left: 1rem;
+}
+
+.next-btn {
+  right: 1rem;
+}
+
+.slide {
+  position: absolute;
+  background-color: lightcoral;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.slide[data-active] {
+  opacity: 1;
+}
