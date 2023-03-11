@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("import test")})();
+(()=>{"use strict";!function(t=".reel",e=".slide"){const r=document.querySelector(t),s=(document.querySelectorAll(e),document.createElement("img"));s.setAttribute("src","images/arrow-left.svg"),s.setAttribute("alt","back arrow"),s.classList.add("prev-btn"),r.appendChild(s);const a=document.createElement("img");a.setAttribute("src","images/arrow-right.svg"),a.setAttribute("alt","foorward arrow"),a.classList.add("next-btn"),r.appendChild(a)}()})();
