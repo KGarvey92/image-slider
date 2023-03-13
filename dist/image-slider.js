@@ -26,6 +26,9 @@ function setupSlider(containerSelector='.reel', slidesSelector='.slide')  {
     }
   }
 
+  // create horizontal dot row
+  // const dotContainer = document.createElement()
+
   nextBtn.addEventListener('click', () => {
     moveSliderForward(container, slides);
   } );
@@ -38,20 +41,47 @@ function setupSlider(containerSelector='.reel', slidesSelector='.slide')  {
 
 function moveSliderForward(container, slides) {
   // initialise currentIndex = index of data-active
+  const currentSlide = container.querySelector('.slide[data-active]');
+  const currentIndex = currentSlide.dataset.index;
+  
+  // remove data-active from current slide
+  currentSlide.removeAttribute('data-active');
 
   // check if currentIndex is equal to last index in nodelist
-    // if so move data-active back to index 0x.
-
-    // else move data-active to current index +1 and update currentIndex.
+  switch (currentIndex) {
+    // if so move data-active back to index 0.
+    case String(slides.length -1):
+      slides[0].setAttribute('data-active', '');
+      break;
+    // else move data-active to current index +1.
+    default:
+      const nextIndex = Number(currentIndex) + 1;
+      slides[nextIndex].setAttribute('data-active', '');
+      break;
+  }
 }
 
-function moveSliderBackward(button='.prev-btn') {
+function moveSliderBackward(container, slides) {
   // initialise currentIndex = index of data-active
+  const currentSlide = container.querySelector('.slide[data-active]');
+  const currentIndex = currentSlide.dataset.index;
+  
+  // remove data-active from current slide
+  currentSlide.removeAttribute('data-active');
 
-  // check if currentIndex = 0
-    // if so move data-active to index[slides.length -1].
-
-    // else move data-active to currentIndex -1.
+  // check if currentIndex is equal to first index in nodelist
+  switch (currentIndex) {
+    // if so move data-active to last index.
+    case '0':
+      slides[slides.length - 1].setAttribute('data-active', '');
+      break;
+    // else move data-active to current index - 1.
+    default:
+      const prevIndex = Number(currentIndex) - 1;
+      slides[prevIndex].setAttribute('data-active', '');
+      break;
+  }
 }
+
 
 export {setupSlider};

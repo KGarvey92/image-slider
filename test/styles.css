@@ -36,8 +36,11 @@
   font-size: 2rem;
   font-weight: bold;
   opacity: 0;
+  transition: 400ms ease-in-out;
+  transition-delay: 400ms;
 }
 
 .slide[data-active] {
   opacity: 1;
+  transition: 400ms ease-in-out;
 }
