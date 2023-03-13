@@ -14,11 +14,16 @@
   position: absolute;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .prev-btn:active, .next-btn:active {
   scale: 0.95;
-  background-color: rgba(0, 0, 0, 0.30);
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 .prev-btn {
@@ -40,11 +45,11 @@
   font-size: 2rem;
   font-weight: bold;
   opacity: 0;
-  transition: 400ms ease-in-out;
-  transition-delay: 400ms;
+  transition: 250ms ease-in-out;
+  transition-delay: 250ms;
 }
 
 .slide[data-active] {
   opacity: 1;
-  transition: 400ms ease-in-out;
+  transition: 250ms ease-in-out;
 }
