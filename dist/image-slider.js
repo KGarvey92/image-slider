@@ -17,8 +17,14 @@ function setupSlider(containerSelector='.reel', slidesSelector='.slide')  {
   container.appendChild(nextBtn);
 
   // apply data indexes to each slide
-
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].setAttribute('data-index', i);
+    
     // apply data-active to first index
+    if (i === 0) {
+      slides[i].setAttribute('data-active', "");
+    }
+  }
 
   nextBtn.addEventListener('click', () => {
     moveSliderForward(container, slides);
