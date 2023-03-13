@@ -1,4 +1,4 @@
-function setupSlider(containerSelector='.reel', slidesSelector='.slide')  {
+function setupSlider(containerSelector='.reel', slidesSelector='.slide', interval=5000)  {
  const container = document.querySelector(containerSelector);
  const slides = container.querySelectorAll(slidesSelector);
 
@@ -27,15 +27,40 @@ function setupSlider(containerSelector='.reel', slidesSelector='.slide')  {
   }
 
   // create horizontal dot row
-  // const dotContainer = document.createElement()
+  const dotContainer = document.createElement('div');
+  dotContainer
+
+  // set timer to advance slides if chosen
+  let timer;
+
+  if (interval !== 0) {
+    timer = setInterval(() => {
+      moveSliderForward(container, slides);
+    }, interval);
+  }
+  
+  // Add event listeners to buttons
 
   nextBtn.addEventListener('click', () => {
     moveSliderForward(container, slides);
+    if (timer) {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        moveSliderForward(container, slides);
+      }, interval);
+    }
   } );
 
   prevBtn.addEventListener('click', () => {
     moveSliderBackward(container, slides);
+    if (timer) {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        moveSliderForward(container, slides);
+      }, interval);
+    }
   } );
+
 }
 
 

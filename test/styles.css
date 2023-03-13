@@ -1,14 +1,13 @@
 
 .reel {
-  width: 90vw;
-  height: 50vh;
+  width: 750px;
+  height: 500px;
   position: relative;
   margin: auto;
-  margin-top: 5rem;
 }
 
 .prev-btn, .next-btn {
-  height: 100px;
+  height: 60px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -17,12 +16,17 @@
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+.prev-btn:active, .next-btn:active {
+  scale: 0.95;
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
 .prev-btn {
-  left: 1rem;
+  left: 0.75rem;
 }
 
 .next-btn {
-  right: 1rem;
+  right: 0.75rem;
 }
 
 .slide {
