@@ -17,11 +17,11 @@
   border-radius: 1rem;
 }
 
-.prev-btn:hover, .next-btn:hover {
+.prev-btn:hover, .next-btn:hover, .dot:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.prev-btn:active, .next-btn:active {
+.prev-btn:active, .next-btn:active, .dot:active {
   scale: 0.95;
   background-color: rgba(0, 0, 0, 0.45);
 }
@@ -62,13 +62,12 @@
   bottom: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-
-
+  cursor: pointer;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   margin: 0 10px;
   background-color: gray;
@@ -76,5 +75,9 @@
 
 .dot[data-active] {
   border: 3px solid black;
-  transition: ease-in-out;
+  transition: 250 ms ease-in-out;
+}
+
+.dot:hover {
+  scale: 1.5;
 }

@@ -5,21 +5,24 @@ function moveSliderForward(container, slides) {
 
   // find associated dot bar and store in nodelist
   const dots = container.querySelectorAll('.dot');
-
+  const currentDot = container.querySelector('.dot[data-active]');
   
-  // remove data-active from current slide
+  // remove data-active from current slide and dot
   currentSlide.removeAttribute('data-active');
+  currentDot.removeAttribute('data-active');
 
   // check if currentIndex is equal to last index in nodelist
   switch (currentIndex) {
     // if so move data-active back to index 0.
     case String(slides.length -1):
       slides[0].setAttribute('data-active', '');
+      dots[0].setAttribute('data-active', '');
       break;
     // else move data-active to current index +1.
     default:
       const nextIndex = Number(currentIndex) + 1;
       slides[nextIndex].setAttribute('data-active', '');
+      dots[nextIndex].setAttribute('data-active', '');
       break;
   }
 }
@@ -29,19 +32,26 @@ function moveSliderBackward(container, slides) {
   const currentSlide = container.querySelector('.slide[data-active]');
   const currentIndex = currentSlide.dataset.index;
   
-  // remove data-active from current slide
+  // find associated dot bar and store in nodelist
+  const dots = container.querySelectorAll('.dot');
+  const currentDot = container.querySelector('.dot[data-active]');
+  
+  // remove data-active from current slide and dot
   currentSlide.removeAttribute('data-active');
+  currentDot.removeAttribute('data-active');
 
   // check if currentIndex is equal to first index in nodelist
   switch (currentIndex) {
     // if so move data-active to last index.
     case '0':
       slides[slides.length - 1].setAttribute('data-active', '');
+      dots[slides.length - 1].setAttribute('data-active', '');
       break;
     // else move data-active to current index - 1.
     default:
       const prevIndex = Number(currentIndex) - 1;
       slides[prevIndex].setAttribute('data-active', '');
+      dots[prevIndex].setAttribute('data-active', '');
       break;
   }
 }
@@ -125,9 +135,36 @@ function setupSlider(containerSelector='.reel', slidesSelector='.slide', interva
     }
   } );
 
+  // Add event listeners to dots.
+  const dots = container.querySelectorAll('.dot');
+  dots.forEach((dot, index) => {
+    const dotIndex = index;
+    const slides = container.querySelectorAll('.slide');
+    dot.addEventListener('click', () => {
+      // remove data-active from current slide and dot
+      const currentSlide = container.querySelector('.slide[data-active]');
+      currentSlide.removeAttribute('data-active');
+      const currentDot = container.querySelector('.dot[data-active]');
+      currentDot.removeAttribute('data-active');
+
+      // Set data-active on new slide and dot
+      slides[dotIndex].setAttribute('data-active', '');
+      dot.setAttribute('data-active', '');
+
+      // reset timer
+      if (timer) {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          moveSliderForward(container, slides);
+        }, interval);
+      }  
+    })
+  })
+  
+
 }
 
 
 
 
-export {setupSlider};
+export default setupSlider;

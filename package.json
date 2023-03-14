@@ -28,5 +28,8 @@
   "devDependencies": {
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
